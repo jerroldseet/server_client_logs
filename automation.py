@@ -3,10 +3,9 @@ import subprocess
 import paramiko
 import os
 
-json_file = "/Users/jerrold.seet/Documents/personal/personal_stash/python/ssh_checker/vm_list.json"
-# json_file = "./vm_list.json"
+json_file = "./vm_list.json"
 user = "root"
-root_folder = "/Users/jerrold.seet/Documents/personal/personal_stash/python/ssh_checker"
+root_folder = "./"
 
 def json_converter(file):
     json_file = open(file)
