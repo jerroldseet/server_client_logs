@@ -7,7 +7,6 @@ import time
 host = '127.0.0.1'
 # The ssh server files
 logs_files = "/var/log/auth.log"
-logs_files = "/Users/jerrold.seet/Downloads/test_file/auth.log"
 # Port that both client and server will be using
 port = 12345 
 

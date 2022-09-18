@@ -20,4 +20,16 @@ In server, these are teh variable to be changed:
 
 PART 2:
 I'll be using ansible for this automation as I assume we are using VMs.
-For this case I'll be using 
+
+I'm using automation.py to deploy server and client.
+
+here are some of the variable to change:
+json_file = the file to list the servers and client
+user_client = the user used to login into client
+user_server = the user used to login into server 
+root_folder = this is the directory where all the script holds
+
+you will also see vm_list.json, in there, you can change all the server and client inside
+
+to run, you have to run this command
+python3 automation.py
