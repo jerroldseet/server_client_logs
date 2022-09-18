@@ -21,22 +21,22 @@ def main():
     for server in server_list:
         print("server: {server}".format(server=server))
         print("copying script to server vm")
-        command = ['scp', '-P', '{server}'.format(server=server), '-r', '{root_folder}'.format(root_folder=root_folder), 'root@localhost:/opt/server']
+        command = ['scp', '-r', '{root_folder}'.format(root_folder=root_folder), '{user}@{server}:/opt/server'.format(user=user,server=server)]
         subprocess.run(command, capture_output=True)
         print("Script copied")
         print("Executing the script")
-        command = 'ssh -p {server} root@localhost "python3 -u /opt/server/server.py >> /opt/server/output 2>> /opt/server/error < /dev/null &"'.format(server=server)
+        command = 'ssh {user}@{server} "python3 -u /opt/server/server.py >> /opt/server/output 2>> /opt/server/error < /dev/null &"'.format(user=user,server=server)
         os.system(command)
         
 
     for client in client_list:
         print("client: {client}".format(client=client))
         print("copying script to client vm")
-        command = ['scp', '-P', '{client}'.format(client=client), '-r', '{root_folder}'.format(root_folder=root_folder), 'root@localhost:/opt/client']
+        command = ['scp', '-r', '{root_folder}'.format(root_folder=root_folder), '{user}@{client}:/opt/client'.format(user=user,client=client)]
         subprocess.run(command, capture_output=True)
         print("Script copied")
         print("Executing the script")
-        command = 'ssh -p {client} root@localhost "python3 -u /opt/client/client.py >> /opt/client/output 2>> /opt/client/error < /dev/null &"'.format(client=client)
+        command = 'ssh {user}@{client} "python3 -u /opt/client/client.py >> /opt/client/output 2>> /opt/client/error < /dev/null &"'.format(user=user,client=client)
         os.system(command)
 
 if __name__ == '__main__':
