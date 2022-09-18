@@ -14,18 +14,17 @@ def send_data():
 
     while True:
         time.sleep(0.5)
-        print('Finding out the number of ssh logs')
-        command = ['cat', logs_files ]
-        out = subprocess.run(command, capture_output=True)
-        raw_logs = (out.stdout).decode("utf-8") 
-        logs = raw_logs.split('\n')
-        del logs[-1] #there's always one more array in the end
-        print("{len} attempt found".format(len=len(logs)))
+        f = open(logs_files, "r")
+        num_of_attempt = 0
+        for x in f:
+            len = len + 1
+            print(x)
+        print(num_of_attempt)
 
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         try:
             s.connect((host, port))
-            s.sendall(bytes("{logs}".format(logs = len(logs)), 'utf8')) 
+            s.sendall(bytes("{num_of_attempt}".format(num_of_attempt = num_of_attempt), 'utf8')) 
             data = s.recv(1024)
             s.close()
             print('Received', repr(data))
