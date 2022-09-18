@@ -7,6 +7,7 @@ import time
 host = '127.0.0.1'
 # The ssh server files
 logs_files = "/var/log/auth.log"
+logs_files = "/Users/jerrold.seet/Downloads/test_file/auth.log"
 # Port that both client and server will be using
 port = 12345 
 
@@ -17,8 +18,7 @@ def send_data():
         f = open(logs_files, "r")
         num_of_attempt = 0
         for x in f:
-            len = len + 1
-            print(x)
+            num_of_attempt = num_of_attempt + 1
         print(num_of_attempt)
 
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
